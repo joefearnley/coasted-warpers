@@ -43,11 +43,10 @@ class Create extends Command
 
         $characters = str_split($characters);
         shuffle($characters);
-        shuffle($characters);
 
         $password = '';
         for($i = 0; $i < $length; $i++) {
-            $password .= $characters[$i];
+            $password .= $characters[array_rand($characters)];
         }
 
         $this->info($password);
