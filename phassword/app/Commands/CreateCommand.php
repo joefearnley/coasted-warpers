@@ -3,9 +3,11 @@
 namespace App\Commands;
 
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\Facades\View;
 use LaravelZero\Framework\Commands\Command;
+use function Termwind\{render};
 
-class Create extends Command
+class CreateCommand extends Command
 {
     /**
      * The signature of the command.
@@ -29,15 +31,11 @@ class Create extends Command
     public function handle()
     {
         $length = $this->ask('Password Length (default 16)?');
-        $useSpecialCharacters = $this->ask('Use special characters (Y/n)?');
-
+        $useSpecialCharacters = $this->ask('Use special characters (Y/n)?') === 'y' ? true : false;
         $length = isset($length) ? intval($length) : 16;
-        $useSpecialCharacters = $useSpecialCharacters === 'y' || $useSpecialCharacters === 'Y' 
-            ? $useSpecialCharacters : true;
 
         $characters = 'abcdefghiklmnopqrstvxyzABCDEFGHIKLMNOPQRSTVXYZ1234567890';
-
-        if ($useSpecialCharacters) {
+        if ($useSpecialCharacters ) {
             $characters .= '!@#$%^&*()+;';
         }
 
@@ -49,6 +47,6 @@ class Create extends Command
             $password .= $characters[array_rand($characters)];
         }
 
-        $this->info($password);
+        render(view('result', ['password' => $password]));
     }
 }
