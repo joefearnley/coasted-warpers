@@ -1,7 +1,10 @@
 <?php
 
-it('has createcommand page', function () {
-    $response = $this->get('/createcommand');
+it('create can be called', function() {
+    $this->artisan('create')
+        ->expectsQuestion('Password Length (default 16)?', '')
+        ->expectsQuestion('Use special characters (Y/n)?', '')
+        ->assertExitCode(0);
 
-    $response->assertStatus(200);
+    $this->assertCommandCalled('create');
 });
