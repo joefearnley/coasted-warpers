@@ -1,0 +1,27 @@
+{
+  "name": "nassword",
+  "version": "1.0.0",
+  "description": "CLI app to generate a password",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joefearnley/coasted-warpers/nassword"
+  },
+  "keywords": [
+    "cli",
+    "password",
+    "node"
+  ],
+  "author": "Joe Fearnley",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/input": "^0.0.28-alpha.0",
+    "chalk-pipe": "^6.0.0",
+    "fast-shuffle": "^5.0.2",
+    "inquirer": "^9.1.4"
+  }
+}
