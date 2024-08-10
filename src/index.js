@@ -17,16 +17,16 @@ const questions = [
             }
 
             return 'Please enter a valid number.';
-          },
-    },
-    {
+        },
+    },{
         type: 'confirm',
         name: 'useSpecialCharacters',
-        message: 'Use special characters (Y/n)?',
+        message: 'Use special characters (default Y)?',
         default() {
             return 'Y';
         },
-    },
+    
+    }
 ];
 
 inquirer.prompt(questions).then((answers) => {
@@ -50,5 +50,4 @@ inquirer.prompt(questions).then((answers) => {
     console.log("\n");
     console.log(`New Password: ${chalkPipe('blue.bold')(password)}`);
     console.log("\n");
-  });
-
+});
